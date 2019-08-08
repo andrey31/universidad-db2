@@ -22,7 +22,7 @@ public class MatriculaController {
 
     @GetMapping
     public Iterable<Matricula> findAllMatricula(){
-        return matriculaCrud.findAll();
+        return matriculaCrud.findAllByOrderByIdDesc();
     }
 
     

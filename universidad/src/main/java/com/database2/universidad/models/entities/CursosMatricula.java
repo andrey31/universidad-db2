@@ -1,11 +1,13 @@
 package com.database2.universidad.models.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -30,17 +32,19 @@ public class CursosMatricula {
     @JsonIgnore
     private Matricula matricula;
 
-    private boolean aprobada;
+    @OneToOne
+    @JoinColumn(name = "fk_estado")
+    private CursoEstado estado;
 
 
     public CursosMatricula() {
     }
 
-    public CursosMatricula(int id, Curso curso, Matricula matricula, boolean aprobada) {
+    public CursosMatricula(int id, Curso curso, Matricula matricula, CursoEstado estado) {
         this.id = id;
         this.curso = curso;
         this.matricula = matricula;
-        this.aprobada = aprobada;
+        this.estado = estado;
     }
 
     public int getId() {
@@ -67,15 +71,11 @@ public class CursosMatricula {
         this.matricula = matricula;
     }
 
-    public boolean isAprobada() {
-        return this.aprobada;
+    public CursoEstado getEstado() {
+        return this.estado;
     }
 
-    public boolean getAprobada() {
-        return this.aprobada;
-    }
-
-    public void setAprobada(boolean aprobada) {
-        this.aprobada = aprobada;
-    }
+    public void setEstado(CursoEstado estado) {
+        this.estado = estado;
+    }    
 }

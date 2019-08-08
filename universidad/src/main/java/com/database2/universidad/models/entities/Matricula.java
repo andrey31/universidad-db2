@@ -33,19 +33,17 @@ public class Matricula {
 
     @ManyToOne
     @JoinColumn(name = "fk_estudiante")
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-    @JsonIdentityReference(alwaysAsId = true)
     private Estudiante estudiante;
 
     @ManyToOne
     @JoinColumn(name = "fk_usuario")
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "usuario")
     @JsonIdentityReference(alwaysAsId = true)
     private Usuario usuario;
 
     @OneToMany(mappedBy = "matricula")
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-    @JsonIdentityReference(alwaysAsId = true)
+  /*   @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true) */
     private List<CursosMatricula> cursosMatricula;
 
     @OneToOne(mappedBy = "matricula")

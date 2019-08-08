@@ -10,6 +10,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface MatriculaCrud extends CrudRepository<Matricula, Integer> {
-
-    
+    public Iterable<Matricula> findAllByOrderByIdDesc();
 }
