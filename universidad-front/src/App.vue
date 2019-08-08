@@ -1,6 +1,12 @@
 <template>
   <div id="app">
-    <sidebar-menu v-if="this.$route.path !== '/login'" :menu="menu" width="200px" :collapsed="collapsed">
+    <sidebar-menu v-if="this.$route.path !== '/login' && this.$ls.get('admin') === 'true'" :menu="menu1" width="200px" :collapsed="collapsed">
+
+        <!-- <span slot="collapse-icon"><v-icon name="arrows-alt-h"></v-icon></span> -->
+        <!-- <span slot="dropdown-icon">dropdown-icon</span> -->
+
+      </sidebar-menu>
+      <sidebar-menu v-if="this.$route.path !== '/login' && this.$ls.get('admin') === 'false'" :menu="menu2" width="200px" :collapsed="collapsed">
 
         <!-- <span slot="collapse-icon"><v-icon name="arrows-alt-h"></v-icon></span> -->
         <!-- <span slot="dropdown-icon">dropdown-icon</span> -->
@@ -19,14 +25,24 @@ export default {
   data () {
     return {
       collapsed: true,
-      menu: [
+      menu1: [
         { header: true, title: 'Universidad DB' },
         { href: '/', name: 'inicio', title: 'Inicio', icon: 'fas fa-home' },
         { href: '/carreras', name: 'carreras', title: 'Carreras', icon: 'fas fa-book-reader'},
-        { href: '/plataforma', title: 'Plataformistas', icon: 'fas fa-user-tie' },
+        { href: '/plataforma', title: 'Plataformistas', icon: 'fas fa-user-tie'},
         { href: '/estudiantes', title: 'Estudiantes', icon: 'fas fa-users' },
         { href: '/matriculas', title: 'Matriculas', icon: 'fas fa-file'},
         { href: '/estadisticas', title: 'Estadisticas', icon: 'fas fa-chart-bar'},
+        { href: '/login', title: 'Salir', icon: 'fas fa-sign-out-alt'}
+      ],
+      menu2: [
+        { header: true, title: 'Universidad DB' },
+        { href: '/', name: 'inicio', title: 'Inicio', icon: 'fas fa-home' },
+        { href: '/carreras', name: 'carreras', title: 'Carreras', icon: 'fas fa-book-reader'},
+        /* { href: '/plataforma', title: 'Plataformistas', icon: 'fas fa-user-tie', disabled: true}, */
+        { href: '/estudiantes', title: 'Estudiantes', icon: 'fas fa-users' },
+        { href: '/matriculas', title: 'Matriculas', icon: 'fas fa-file'},
+        /* { href: '/estadisticas', title: 'Estadisticas', icon: 'fas fa-chart-bar', disabled: true}, */
         { href: '/login', title: 'Salir', icon: 'fas fa-sign-out-alt'}
       ]
     }

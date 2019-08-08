@@ -7,7 +7,7 @@
     </b-row>
     <b-row>
       <b-col cols="1">
-        <b-button variant="primary">Nuevo</b-button>
+        <!-- <b-button variant="primary">Nuevo</b-button> -->
         <!-- <a href="" @click.prevent=""><v-icon name="plus" scale="2" class="text-primary"></v-icon></a> -->
       </b-col>
       <b-col cols="4" offset="7">
@@ -21,9 +21,11 @@
     <b-row class="pt-3">
       <b-col>
         <b-table
+        responsive
         :items="estudiantes"
         :fields="fields"
         :filter="filter"
+
         >
           <template slot="nombreCompleto" slot-scope="row">
             {{row.item.nombre}} {{row.item.apellido1}} {{row.item.apellido2}}
@@ -63,7 +65,7 @@ export default {
         'correo',
         { key: 'regular', label: 'Regular/Nuevo'},
         'carrera',
-        'direccion'
+        'direccion',
       ],
       filter: ''
     }
